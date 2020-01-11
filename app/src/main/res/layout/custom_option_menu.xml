@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:foreground="?attr/selectableItemBackground"
+    android:background="@drawable/custom_popup_shadow_background">
+
+    <TextView
+        android:id="@+id/sort_by_stars"
+        style="@style/TextStyle.CustomPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:minHeight="48dp"
+        android:text="@string/sort_by_stars"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:foreground="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/sort_by_name"
+        style="@style/TextStyle.CustomPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:minHeight="48dp"
+        android:text="@string/sort_by_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/sort_by_stars"
+        app:layout_constraintLeft_toLeftOf="@string/sort_by_stars"
+        app:layout_constraintTop_toBottomOf="@id/sort_by_stars"
+        android:foreground="?attr/selectableItemBackground"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

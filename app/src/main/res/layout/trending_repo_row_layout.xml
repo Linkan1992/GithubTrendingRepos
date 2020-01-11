@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.linkan.githubtrendingrepos.ui.adapter.TrendingRepoViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:fresco="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?selectableItemBackground">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/margin_16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/margin_16dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_avatar"
+            style="@style/TextStyle.Avatar"
+            android:layout_width="@dimen/layout_32dp"
+            android:layout_height="@dimen/layout_32dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent"
+            fresco:failureImage="@drawable/nointernet_connection"
+            fresco:placeholderImage="@drawable/nointernet_connection"
+            fresco:roundAsCircle="true"
+            app:imageUrl="@{ viewModel.avatar }"/>
+
+
+        <TextView
+            android:id="@+id/tv_author"
+            style="@style/TextStyle.RegularSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ viewModel.author }"
+            app:layout_constraintStart_toEndOf="@id/img_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            tools:text="ChauhanLinkan fsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfsfssfssdsdsdsfsfs"/>
+
+        <TextView
+            android:id="@+id/tv_repo_name"
+            style="@style/TextStyle.MediumSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{ viewModel.name}"
+            app:layout_constraintStart_toStartOf="@id/tv_author"
+            app:layout_constraintTop_toBottomOf="@id/tv_author"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            tools:text="Linkan Chauhan sfsfsfsfsfsffsfsfsfsfsdfdfdfasfadsfdfdfsadfdffsfsfsfsfsfsfsfsfsf" />
+
+        <TextView
+            android:id="@+id/grey_seperator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@color/lightGrey"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_repo_name" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_child"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:layout_marginTop="@dimen/margin_8dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/tv_repo_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_repo_name">
+
+            <TextView
+                android:id="@+id/tv_repo_description"
+                style="@style/TextStyle.RegularPingFang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.description }"
+                tools:text="Linkan Chauhan sgsfgsdggfdgffwrfrwfrwfrwfwerfwefwefefefewfewfewfewfewfewfewfwefewfewfwefewfwefwefwefwefewfwefewfwefwefwefewfwefwefewfwefsdfsgsgs" />
+
+            <ImageView
+                android:id="@+id/language_color"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                app:layout_constraintBottom_toBottomOf="@id/language_name"
+                app:layout_constraintStart_toStartOf="@id/tv_repo_description"
+                app:layout_constraintTop_toBottomOf="@id/tv_repo_description"
+                app:layout_constraintTop_toTopOf="@id/language_name"
+                app:srcCompat="@drawable/ic_icon_order_status_color"
+                android:tint="@{ viewModel.languageColor }"
+                tools:tint="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/language_name"
+                style="@style/TextStyle.RegularSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginBottom="@dimen/margin_16dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@id/language_color"
+                app:layout_constraintTop_toBottomOf="@id/tv_repo_description"
+                android:text="@{ viewModel.language }"
+                tools:text="C++" />
+
+            <ImageView
+                android:id="@+id/star_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginBottom="@dimen/margin_16dp"
+                app:layout_constraintStart_toEndOf="@id/language_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_repo_description"
+                app:srcCompat="@drawable/star_yellow" />
+
+
+            <TextView
+                android:id="@+id/star_number"
+                style="@style/TextStyle.RegularSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:text="@{ viewModel.stars }"
+                app:layout_constraintStart_toEndOf="@id/star_symbol"
+                app:layout_constraintTop_toTopOf="@id/star_symbol"
+                app:layout_constraintBottom_toBottomOf="@id/star_symbol"
+                tools:text="123456" />
+
+
+            <ImageView
+                android:id="@+id/fork_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginBottom="@dimen/margin_16dp"
+                app:layout_constraintStart_toEndOf="@id/star_number"
+                app:layout_constraintTop_toBottomOf="@id/tv_repo_description"
+                app:srcCompat="@drawable/fork_black" />
+
+
+            <TextView
+                android:id="@+id/fork_number"
+                style="@style/TextStyle.RegularSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:text="@{ viewModel.forks }"
+                app:layout_constraintStart_toEndOf="@id/fork_symbol"
+                app:layout_constraintTop_toTopOf="@id/fork_symbol"
+                app:layout_constraintBottom_toBottomOf="@id/fork_symbol"
+                tools:text="123456" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/blur_seperator"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:background="@drawable/shadow_224232"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_child" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
